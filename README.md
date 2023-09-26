@@ -11,9 +11,8 @@
 
 ![image](https://github.com/Sansar01/Javascript-Project/assets/89459552/5f98acda-76fb-4d0b-af0b-f0213a121e1a)
 
-## Project 4 - Guess The Number
+## Project 4 - This is the "Guess The Number" project in which you have to guess the number to match from "Random Number"
 
-This is the "Guess The Number" project where you have to guess the number 
 ![image](https://github.com/Sansar01/Javascript-Project/assets/89459552/6f5c556f-998c-465e-9be2-b816310f1586)
 
 
