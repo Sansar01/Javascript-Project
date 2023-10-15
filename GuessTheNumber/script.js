@@ -12,6 +12,7 @@ const p = document.querySelector('p');
 
 let prevGuess = [];
 let numGuess = 1;
+let count;
 
 let playGame = true;
 
@@ -19,7 +20,7 @@ if (playGame) {
     submit.addEventListener('click', function(e) {
         e.preventDefault();
         const guess = parseInt(userInput.value);
-
+        count = 0;
         validateGuess(guess)
     })
 }
@@ -30,28 +31,20 @@ function validateGuess(guess) {
     } else if ((guess < 1) && (guess > 100)) {
         alert('Please enter a vald number')
     } else {
-
-        if (prevGuess.length == 0) {
-            prevGuess.push(guess)
-            print(guess)
-        } else {
-            for (i = 0; i < prevGuess.length; i++) {
-                if (guess === prevGuess[i]) {
-                    alert('You entered this number before,Please enter another number')
-                    break;
-                } else {
-                    prevGuess.push(guess)
-                    print(guess)
-                    break;
-                }
+        for (i = 0; i < prevGuess.length; i++) {
+            if (guess === prevGuess[i]) {
+                alert('You entered this number before,Please enter another number')
+                count++;
+                break;
             }
         }
+        if (count == 0) {
+            prevGuess.push(guess)
+            print(guess)
+        }
     }
-
-
-
-
 }
+
 
 function print(guess) {
     if (numGuess === 10) {
