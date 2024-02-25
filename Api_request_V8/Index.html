@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 40%;
+        }
+        
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        .container {
+            padding: 2px 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card" style="display:none">
+        <img src="img_avatar.png" style="width:100%">
+        <div class="container">
+            <h4>
+                <b>John Doe</b>
+            </h4>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-info">Info</button>
+
+
+</body>
+<script>
+    let value = {
+        img_url: '',
+        followers: ''
+    };
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", requestUrl)
+    xhr.onreadystatechange = function() {
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText);
+            //const data = this.responseText;
+            console.log(data)
+            value.img_url = data.avatar_url;
+            value.followers = data.followers;
+            //console.log(value.img_url + "   " + value.followers);
+            document.querySelector('.btn-info').addEventListener('click', () => {
+                    document.querySelector('.card').style.display = "block";
+                    document.querySelector('.card').childNodes[1].setAttribute("src", data.avatar_url);
+                    document.querySelector('.card').childNodes[3].childNodes[1].childNodes[1].innerHTML = data.followers;
+                    console.log(document.querySelector('.card').childNodes[1].setAttribute("src", data.avatar_url));
+                })
+        }
+    }
+    xhr.send()
+</script>
+
+</html>
