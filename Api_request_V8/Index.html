@@ -31,35 +31,33 @@
             </h4>
         </div>
     </div>
-
     <button type="button" class="btn btn-info">Info</button>
 
 
 </body>
 <script>
-    let value = {
-        img_url: '',
-        followers: ''
-    };
     const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
     const xhr = new XMLHttpRequest();
     xhr.open("GET", requestUrl)
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = value = function() {
         console.log(xhr.readyState);
         if (xhr.readyState === 4) {
             const data = JSON.parse(this.responseText);
             //const data = this.responseText;
             console.log(data)
-            value.img_url = data.avatar_url;
-            value.followers = data.followers;
-            //console.log(value.img_url + "   " + value.followers);
+                // getInfo(data);
             document.querySelector('.btn-info').addEventListener('click', () => {
-                    document.querySelector('.card').style.display = "block";
-                    document.querySelector('.card').childNodes[1].setAttribute("src", data.avatar_url);
-                    document.querySelector('.card').childNodes[3].childNodes[1].childNodes[1].innerHTML = data.followers;
-                    console.log(document.querySelector('.card').childNodes[1].setAttribute("src", data.avatar_url));
-                })
+                document.querySelector('.card').style.display = "block";
+                document.querySelector('.card').childNodes[1].setAttribute("src", data.avatar_url);
+                document.querySelector('.card').childNodes[3].childNodes[1].childNodes[1].innerHTML = data.followers;
+                //console.log(document.querySelector('.card').childNodes[1].setAttribute("src", data.avatar_url));
+            })
         }
+    }
+
+    function getInfo(data) {
+        const value = data;
+        console.log(value);
     }
     xhr.send()
 </script>
