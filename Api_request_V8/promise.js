@@ -57,7 +57,7 @@ const promiseFive = new Promise(function(resolve, reject) {
         if (!error) {
             resolve({ username: "javascript", password: "987" })
         } else {
-            reject('Error:js went wrong')
+            reject('Error:Js went wrong')
         }
     }, 1000)
 })
@@ -74,18 +74,18 @@ async function consumedFive() {
 consumedFive();
 
 
-// async function getAllUser() {
-//     try {
-//         const response = await fetch('https://jsonplaceholder.typicode.com/users');
+async function getAllUser() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
 
-//         const data = await response.json()
-//         console.log(data)
-//     } catch (error) {
-//         console.log("E:" + error)
-//     }
-// }
+        const data = await response.json()
+        console.log(data)
+    } catch (error) {
+        console.log("E:" + error)
+    }
+}
 
-// getAllUser()
+getAllUser()
 
 
 fetch('https://jsonplaceholder.typicode.com/users').then((response) => {
